@@ -26,8 +26,8 @@ spring:
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: ${user:adel}
-    password: ${DB_PASS:passer123}
+    username: ${user:adel_api}
+    password: ${DB_PASS:Tester123}
     url: jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5433}/${DB_NAME:analyse-selection}
   flyway:
     enabled: false
