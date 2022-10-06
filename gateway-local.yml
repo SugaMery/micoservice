@@ -1,0 +1,49 @@
+
+
+spring:
+  main:
+    allow-bean-definition-overriding: true
+    web-application-type: reactive
+    allow-circular-references: true #To remove later after review
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8484/auth/realms/adel/protocol/openid-connect/certs
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+
+    discovery:
+      enabled: true
+
+
+  sleuth:
+    sampler:
+      probability: 1.0
+  zipkin:
+    base-url: http://localhost:9411/
+
+
+server:
+  port: 8765
+
+
+#eureka
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+
+keycloak:
+  auth-server-url: http://localhost:8484/auth
+  realm: adel
+  resource: gateway
+  public-client: true
+  use-resource-role-mappings: true
+  ssl-required: none
